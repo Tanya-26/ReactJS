@@ -1,24 +1,29 @@
 import { useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const initName={
+    id:1,name:"KIET"
+  }
+  let [nameObj, setName] = useState(initName);
+  const changeName = (newName)=>{
+    setName({...nameObj, name:newName});
+  }
+  // string
+  // const [name, setName] = useState("KIET");
+
+  // function changeName(newName){
+  //   setName(newName);
+  // }
   // function clickMe() {
   //   alert("Welcome react event handling");
   // }
 
-  //   function increment(count) {
-  //     return count + 1;
-  //   }
-  //   function decrement(count) {
-  //     return count - 1;
-  //   }
-  //   let count = 0;
   return (
     <div>
       {/* <button onClick={clickMe}>Click Me</button> */}
-      <button onClick={() => setCount(count + 1)}> Increment</button>
-      <h1>{count}</h1>
-      <button onClick={() => setCount(count - 1)}> Decrement</button>
+      
+      <button onClick={()=>changeName("KIET MCA")}>Change Name</button>
+        <p>Current Name: {nameObj.name}</p> 
     </div>
   );
 };
