@@ -36,3 +36,4 @@ for displaying array use map in that key is the row you want to display(the valu
 onClick(only pass address of function)
 # State Management
 state - value at a particular time 
+useState is used for state management
