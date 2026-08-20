@@ -6,6 +6,7 @@ const App = () => {
   }
   let [nameObj, setName] = useState(initName);
   const changeName = (newName)=>{
+    console.log(nameObj);
     setName({...nameObj, name:newName});
   }
   // string
@@ -24,6 +25,7 @@ const App = () => {
       
       <button onClick={()=>changeName("KIET MCA")}>Change Name</button>
         <p>Current Name: {nameObj.name}</p> 
+        {console.log(nameObj)}
     </div>
   );
 };
