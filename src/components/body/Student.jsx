@@ -1,9 +1,11 @@
-
-const Student = ({ id, name }) => {
+const Student = ({ id, name, sec, Dept }) => {
   return (
-    <div>
-      <h2>ID: {id} Name: {name}</h2>
-    </div>
+    <tr>
+      <td>{id}</td>
+      <td>{name}</td>
+      <td>{sec}</td>
+      <td>{Dept}</td>
+    </tr>
   )
 }
 
