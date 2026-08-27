@@ -10,10 +10,11 @@ const Body = () => {
   ]);
 
   return (
+    <>
     <div>
-      <h2>Student Information</h2>
-      <table border="1" style={{ borderCollapse: "collapse", width: "100%" }}>
-        <thead>
+      <h2 className="bg-warning text-primary text-center">Student Information</h2>
+      <table className="table">
+        <thead className="table-dark">
           <tr>
             <th>ID</th>
             <th>Name</th>
@@ -21,7 +22,7 @@ const Body = () => {
             <th>Dept</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="table-success">
           {studentInfo.map((student) => (
             <Student 
               key={student.id} 
@@ -34,6 +35,7 @@ const Body = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

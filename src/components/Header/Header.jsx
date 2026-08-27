@@ -3,7 +3,7 @@
 const Header = () => {
   return (
     <div>
-      <h3>React JS</h3>
+      <h3 className="text-center">React JS</h3>
     </div>
   )
 }

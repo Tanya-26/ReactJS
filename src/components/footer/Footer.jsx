@@ -2,8 +2,8 @@
 
 const Footer = () => {
   return (
-    <div>
-      
+    <div className="bg-dark text-white">
+      <p className=" text-center">@Copyright: 2026 MCA</p>
     </div>
   )
 }
