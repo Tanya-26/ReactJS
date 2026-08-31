@@ -1,22 +1,16 @@
-import { useState } from "react";
-// import Bootstrap from "../src/components/BootsrtapExp"
-import Counter from "./components/Counter";
-const App = () => {
-  const [count, setCount] = useState(2);
-  const increment = () => {
-    setCount(count+1);
-  };
-  const decrement = () => {
-    setCount(count-1);
-  };
-  return (
-    <div className="container">
-      {/* <Bootstrap/> */}
-      <Counter count={count} increment={increment} decrement={decrement} />
-      <Counter count={count} increment={increment} decrement={decrement} />
-      <button className="mt-2 btn btn-primary" onClick={() => setCount(0)}> Reset </button>
-    </div>
-  );
-};
 
-export default App;
+import Message from './components/Message'
+import CounterP from './components/CounterP'
+
+const App = () => {
+  return (
+    <div>
+      <Message info="Child Component">
+        <h3>This is child tag inside Message Component</h3>
+        <CounterP />
+      </Message>
+    </div>
+  )
+}
+
+export default App
