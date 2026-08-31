@@ -1,14 +1,9 @@
 
-import Message from './components/Message'
-import CounterP from './components/CounterP'
-
+import Registration from './components/Registration'
 const App = () => {
   return (
     <div>
-      <Message info="Child Component">
-        <h3>This is child tag inside Message Component</h3>
-        <CounterP />
-      </Message>
+      <Registration/>
     </div>
   )
 }
