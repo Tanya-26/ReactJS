@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import hero from "../../assets/hero.png";
+
 const Header = () => {
   const activeStyle = ({ isActive }) => {
     return {
@@ -56,36 +57,14 @@ const Header = () => {
                 About
               </NavLink>
             </li>
-            <li className="nav-item dropdown">
+            <li className="nav-item">
               <NavLink
-                className="nav-link dropdown-toggle"
-                to="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+                className="nav-link"
+                to="/courses"
+                style={activeStyle}
               >
-                Dropdown
+                Courses
               </NavLink>
-              <ul className="dropdown-menu">
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                    Action
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                    Another action
-                  </NavLink>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <NavLink className="dropdown-item" to="#">
-                    Something else here
-                  </NavLink>
-                </li>
-              </ul>
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">
