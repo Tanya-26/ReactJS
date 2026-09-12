@@ -37,7 +37,7 @@ const Header = () => {
               <NavLink
                 className="nav-link"
                 aria-current="page"
-                to="/"
+                to="/home"
                 style={activeStyle}
               >
                 Home

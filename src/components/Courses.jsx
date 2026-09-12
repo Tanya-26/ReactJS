@@ -2,7 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const Courses = () => {
   return (
-    <div>
+    <div className="container" style={{ height: "80vh" }}>
       <h2>Select your course:</h2>
       <nav className='justify-between d-flex mb-4'> 
         
