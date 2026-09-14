@@ -37,3 +37,5 @@ onClick(only pass address of function)
 # State Management
 state - value at a particular time 
 useState is used for state management
+# Lazy Routing
+when one page has multiple components if a certain component is taking time then only that component should show loading others will be rendered

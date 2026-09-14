@@ -1,37 +1,26 @@
-import { useReducer } from "react";
+import { useRef } from 'react';
 
 const Home = () => {
-  const initialState = {
-    count: 0,
-  };
-  const reduce = (state, action) => {
-    switch (action) {
-      case "plus1":
-        return { ...state, count: state.count + 1 };
-      case "plus5":
-        return { ...state, count: state.count + 5 };
-      case "minus1":
-        return { ...state, count: state.count - 1 };
-      default:
-        return state;
-    }
-  };
-  const [state, dispatch] = useReducer(reduce, initialState);
+  const info = useRef();
+  const btn = useRef(); // Define the ref for the button
+  
+  const onFocus = (e) => {
+    e.preventDefault(); 
+    info.current.focus(); 
+    btn.current.style.backgroundColor = "Green"; // Now btn is defined and can be modified
+  }
+
   return (
-    <div style={{ height: "80vh" }}>
-      <h2>Home Component</h2>
-      <h2>Count:{state.count} </h2>
-      <button className="btn btn-primary" onClick={() => dispatch("plus1")}>
-        Plus 1
-      </button>
-      <button className="btn btn-primary" onClick={() => dispatch("plus5")}>
-        Plus 5
-      </button>
-      <button className="btn btn-primary" onClick={() => dispatch("minus1")}>
-        Minus 1
-      </button>
+    <div style={{height: "80vh"}}>
+      <h2>use ref Hook Example</h2>
+      <form action="">
+        <input type="text" ref={info}/>
+        <button ref={btn} className='btn btn-primary' onClick={onFocus}>
+          Set Focus
+        </button>
+      </form>
     </div>
-  );
-};
+  )
+}
 
 export default Home;
