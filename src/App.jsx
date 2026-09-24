@@ -8,13 +8,15 @@ import Error from "./components/Error";
 import Product from "./components/Product";
 import Courses from "./components/Courses";
 import Home from "./components/Home"; 
-
+import UseSearchParams from "./components/UseSearchParams";
+import Timer1 from "./components/Timer1";
 const App = () => {
   return (
     // 1. Added Flexbox styles to make the layout span the full viewport height
     <div className="container" style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Header />
-      
+      <UseSearchParams />
+      <Timer1/>
       {/* 2. 'flex: 1' allows this area to grow, naturally pushing the Footer to the bottom */}
       <main style={{ flex: 1 }}>
         <Routes>
