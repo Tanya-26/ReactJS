@@ -55,7 +55,7 @@ const UseEffect = () => {
     <div className="container" style={{ height: "80vh" }}>
       <h2>Home Page</h2>
       {/* <p>Opened {count} times</p> */}
-      {/* {JSON.stringify(product)} */}
+      {JSON.stringify(product)}
       {product.map((item)=>(
         <div key={item.id}>
             <li>ID:{item.id}</li>
