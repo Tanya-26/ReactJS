@@ -11,9 +11,19 @@
       "address": "mca"
     },
     {
-      "id": "pyBrHM_5elo",
+      "id": "RK3SmXLPfhE",
       "name": "user3",
-      "address": "IT KIET"
+      "address": "Raj Nagar"
+    },
+    {
+      "id": "sAA0v5Ga9K0",
+      "name": "user4",
+      "address": "CS"
+    },
+    {
+      "id": "QSrKHjpw3SU",
+      "name": "user5",
+      "address": "Ghaziabad"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

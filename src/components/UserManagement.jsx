@@ -1,51 +1,68 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
-const Home = () => {
+const UserManagement = () => {
   const [users, setUsers] = useState([]);
   const [formData, setFormData] = useState({ id: "", name: "", address: "" });
   const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/users")
-      .then((res) => setUsers(res.data))
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users", error));
   }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate that ID, Name, and Address are all filled in
     if (!formData.id.trim() || !formData.name.trim() || !formData.address.trim()) {
       alert("Please fill in ID, Name, and Address.");
       return;
     }
 
-    try {
-      if (editingId) {
-        const response = await axios.put(
-          `http://localhost:5000/users/${editingId}`,
-          formData
-        );
-
-        setUsers((prevUsers) =>
-          prevUsers.map((u) => (u.id === editingId ? response.data : u))
-        );
-      } else {
-        const response = await axios.post("http://localhost:5000/users", formData);
-        setUsers((prevUsers) => [...prevUsers, response.data]);
+    if (editingId) {
+      // UPDATE: Send the PUT request
+      try {
+        const response = await fetch(`http://localhost:5000/users/${editingId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+        
+        if (response.ok) {
+          const updatedUser = await response.json();
+          setUsers(users.map((u) => (u.id === editingId ? updatedUser : u)));
+          setEditingId(null); 
+          setFormData({ id: "", name: "", address: "" });
+        }
+      } catch (error) {
+        console.error("Error updating user", error);
       }
+    } else {
+      // CREATE: Send the full formData, including your custom ID
+      try {
+        const response = await fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData), 
+        });
 
-      setEditingId(null);
-      setFormData({ id: "", name: "", address: "" });
-    } catch (error) {
-      console.error("Error saving user", error);
-      alert("Failed to save user. Ensure the ID is unique.");
+        if (response.ok) {
+          const newUser = await response.json();
+          setUsers([...users, newUser]);
+          setFormData({ id: "", name: "", address: "" });
+        } else {
+          alert("Failed to add user. Ensure the ID is unique.");
+        }
+      } catch (error) {
+        console.error("Error adding user", error);
+      }
     }
   };
 
@@ -56,9 +73,12 @@ const Home = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/users/${id}`);
-      if (response.status === 200) {
-        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+      const response = await fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        setUsers(users.filter((user) => user.id !== id));
       }
     } catch (error) {
       console.error("Error deleting user", error);
@@ -157,4 +177,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default UserManagement;
