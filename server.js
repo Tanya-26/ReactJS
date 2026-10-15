@@ -11,6 +11,39 @@ const server = http.createServer((req, res) => {
 
   const fname = parsedUrl.searchParams.get("fname");
   const content = parsedUrl.searchParams.get("content");
+  
+if (
+  route === "/" ||
+  route === "/index.html" ||
+  route === "/style.css" ||
+  route === "/script.js"
+) {
+  const publicDir = path.join(__dirname, "public");
+
+  const publicFile =
+    route === "/" || route === "/index.html"
+      ? path.join(publicDir, "index.html")
+      : path.join(publicDir, route.slice(1));
+
+  const contentType = publicFile.endsWith(".css")
+    ? "text/css"
+    : publicFile.endsWith(".js")
+    ? "application/javascript"
+    : "text/html";
+
+  fs.readFile(publicFile, (error, data) => {
+    if (error) {
+      res.writeHead(404, { "Content-Type": "text/plain" });
+      res.end("Frontend file not found!");
+      return;
+    }
+
+    res.writeHead(200, { "Content-Type": contentType });
+    res.end(data);
+  });
+
+  return;
+}
 
   if (!fname) {
     res.writeHead(400, { "Content-Type": "text/plain" });
