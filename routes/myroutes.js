@@ -42,10 +42,10 @@ router.get(
   }
 );
 
-// GET product using request body (for practice)
+// GET product using request body or query parameters (for practice)
 router.get("/product", (req, res) => {
-  const pid = req.body.pid;
-  const pname = req.body.pname;
+  const pid = req.body?.pid ?? req.query.pid;
+  const pname = req.body?.pname ?? req.query.pname;
 
   res.status(200).json({
     pid,
